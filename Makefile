@@ -250,8 +250,8 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = gcc
 HOSTCXX      = g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -fomit-frame-pointer $(ARCHIKERNEL_FLAGS)
-HOSTCXXFLAGS = $(ARCHIKERNEL_FLAGS)
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -fomit-frame-pointer $(LDROIDKERNEL_FLAGS)
+HOSTCXXFLAGS = $(LDROIDKERNEL_FLAGS)
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
