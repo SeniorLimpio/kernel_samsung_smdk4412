@@ -740,6 +740,11 @@ static int exynos_cpufreq_cpu_init(struct cpufreq_policy *policy)
 	return retval;
 }
 
+static struct freq_attr *exynos_cpufreq_attr[] = {
+	&cpufreq_freq_attr_scaling_available_freqs,
+	NULL,
+};
+
 static int exynos_cpufreq_reboot_notifier_call(struct notifier_block *this,
 				   unsigned long code, void *_cmd)
 {
@@ -768,7 +773,9 @@ static struct cpufreq_driver exynos_driver = {
 	.target		= exynos_target,
 	.get		= exynos_getspeed,
 	.init		= exynos_cpufreq_cpu_init,
+	.exit		= exynos_cpufreq_cpu_exit,
 	.name		= "exynos_cpufreq",
+	.attr		= exynos_cpufreq_attr,
 #ifdef CONFIG_PM
 	.suspend	= exynos_cpufreq_suspend,
 	.resume		= exynos_cpufreq_resume,
